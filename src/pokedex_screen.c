@@ -1388,14 +1388,14 @@ static u16 DexScreen_CountMonsInOrderedList(u8 orderIdx)
             caught = DexScreen_GetSetPokedexFlag(ndex_num, FLAG_GET_CAUGHT, FALSE);
             if (seen)
             {
-                sPokedexScreenData->listItems[i].label = gSpeciesNames[NationalPokedexNumToSpecies(ndex_num)];
+                sPokedexScreenData->listItems[i].label = gSpeciesNames[KantoPokedexNumToSpecies(ndex_num)];
                 ret = ndex_num;
             }
             else
             {
                 sPokedexScreenData->listItems[i].label = gText_5Dashes;
             }
-            sPokedexScreenData->listItems[i].index = (caught << 17) + (seen << 16) + NationalPokedexNumToSpecies(ndex_num);
+            sPokedexScreenData->listItems[i].index = (caught << 17) + (seen << 16) + KantoPokedexNumToSpecies(ndex_num);
         }
         break;
     case DEX_ORDER_ATOZ:

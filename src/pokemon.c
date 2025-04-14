@@ -38,8 +38,10 @@
 #include "constants/union_room.h"
 
 #define SPECIES_TO_HOENN(name)      [SPECIES_##name - 1] = HOENN_DEX_##name
+#define SPECIES_TO_KANTO(name)      [SPECIES_##name - 1] = KANTO_DEX_##name
 #define SPECIES_TO_NATIONAL(name)   [SPECIES_##name - 1] = NATIONAL_DEX_##name
 #define HOENN_TO_NATIONAL(name)     [HOENN_DEX_##name - 1] = NATIONAL_DEX_##name
+#define KANTO_TO_NATIONAL(name)     [KANTO_DEX_##name - 1] = NATIONAL_DEX_##name
 
 struct MonSpritesGfxManager
 {
@@ -5151,6 +5153,24 @@ static u16 HoennPokedexNumToSpecies(u16 hoennNum)
     species = 0;
 
     while (species < NUM_SPECIES - 1 && sSpeciesToHoennPokedexNum[species] != hoennNum)
+        species++;
+
+    if (species == NUM_SPECIES - 1)
+        return 0;
+
+    return species + 1;
+}
+
+u16 KantoPokedexNumToSpecies(u16 kantoNum)
+{
+    u16 species;
+
+    if (!kantoNum)
+        return 0;
+
+    species = 0;
+
+    while (species < NUM_SPECIES - 1 && sSpeciesToHoennPokedexNum[species] != kantoNum)
         species++;
 
     if (species == NUM_SPECIES - 1)
